@@ -1,4 +1,4 @@
-'''calculate BLEU score'''
+'''calculate BLEU (BiLingual Evaluation Understudy) score'''
 import numpy as np
 import nltk
 from .utils import Coder
@@ -6,6 +6,13 @@ from .utils import Coder
 def calc_bleu(sent_gt, sent_pred, n):
     '''calculate bleu score given grand truth and predicted sentences
     
+    Example:
+        >>> sent_gt = 'The NASA Opportunity rover is battling a massive dust storm on Mars .'
+        >>> sent_pred = 'A NASA rover is fighting a massive storm on Mars .'
+        >>> # calculate BLEU score
+        >>> calc_bleu(sent_gt, sent_pred, n=4)
+        >>> # 0.27221791225495623
+
     Args:
         sent_gt: grand truth sentence string
         sent_pred: predicted sentence string
@@ -32,7 +39,7 @@ def calc_bleu(sent_gt, sent_pred, n):
         freq_pred = nltk.FreqDist(i_gram_pred)
         
         numerator = 0
-        for word, gt_count in freq_gt.items():
+        for word in freq_gt.keys():
             cnt_pred = freq_pred[word]
             cnt_gt = freq_gt[word]
             numerator += min(cnt_pred, cnt_gt)

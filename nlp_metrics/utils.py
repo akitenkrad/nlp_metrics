@@ -17,7 +17,11 @@ class Coder(object):
     @property
     def tokenizer(self):
         return nltk.word_tokenize
-    
+
+    @property   
+    def vocab(self):
+        return self.encoder
+
     def build(self, dataset:list):
         '''build a dictionary
         
