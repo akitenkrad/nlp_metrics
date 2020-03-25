@@ -4,7 +4,7 @@ import nltk
 from .utils import Coder
 
 def calc_recall(sent_gt, sent_pred, n):
-    '''calculate RECALL under ROUGE-N
+    '''calculate RECALL with ROUGE-N
 
     ROUGE-RECALL = number_of_overlapping_words / total_words_in_ground_truth_sentence
 
@@ -21,7 +21,7 @@ def calc_recall(sent_gt, sent_pred, n):
         n: int. n-gram
 
     Return:
-        float. recall score under ROUGE-N
+        float. recall score with ROUGE-N
     '''
     ds = [sent_gt, sent_pred]
     coder = Coder()
@@ -47,7 +47,7 @@ def calc_recall(sent_gt, sent_pred, n):
     return recall
 
 def calc_precision(sent_gt, sent_pred, n):
-    '''calculate PRECISION under ROUGE-N
+    '''calculate PRECISION with ROUGE-N
 
     ROUGE-PRECISION = number_of_overlapping_words / total_words_in_predicted_sentence
 
@@ -64,7 +64,7 @@ def calc_precision(sent_gt, sent_pred, n):
         n: int. n-gram
 
     Return:
-        float. precision score under ROUGE-N
+        float. precision score with ROUGE-N
     '''
     ds = [sent_gt, sent_pred]
     coder = Coder()
